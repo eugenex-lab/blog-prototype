@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import JoinButton from "@/components/JoinButton";
+import JoinButton from "@/components/Buttons/JoinButton";
 export default {
   name: 'TheFooter',
   components: {JoinButton},

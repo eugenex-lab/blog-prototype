@@ -54,9 +54,9 @@ export default {
 }
 
 @media screen and (min-width: 768px) {
-  .container {
-    padding: 40px;
-  }
+  /*.container {*/
+  /*  padding: 40px;*/
+  /*}*/
 }
 </style>
 
