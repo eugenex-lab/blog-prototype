@@ -2,17 +2,21 @@
   <div class="container">
     <BigBoxArticle />
 
+      <SmallBoxArticle />
+
+
 
 
   </div>
-  <button class="load-more" @click="loadMore()">Load More</button>
 </template>
 
 <script>
 import BigBoxArticle from "@/components/BigBoxArticle.vue";
+import SmallBoxArticle from "@/components/SmallBoxArticle";
 export default {
   name: 'HomeView',
   components: {
+    SmallBoxArticle,
     BigBoxArticle
 
   },
@@ -34,11 +38,17 @@ export default {
 
 <style scoped>
 .container {
+
+
+
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   padding: 20px;
+  min-height: 100vh;
+  flex-direction: column;
+
 }
 
 
@@ -53,11 +63,17 @@ export default {
   cursor: pointer;
 }
 
+
+.box-container {
+  display: flex;
+}
+
 @media screen and (min-width: 768px) {
   /*.container {*/
   /*  padding: 40px;*/
   /*}*/
 }
+
 </style>
 
 }

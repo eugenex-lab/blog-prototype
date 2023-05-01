@@ -1,12 +1,25 @@
 <template>
-  <div>
-    <button class="my-button">Join Us</button>
-  </div>
+
+    <button class="button" @click="handleButtonClick">Load</button>
+
 </template>
 
 <script>
+import $ from 'jquery';
 export default {
-  name: "JoinButton"
+  name: "JoinButton",
+  methods: {
+    handleButtonClick() {
+      const button = $('.button');
+      const spinner = '<span class="spinner"></span>';
+      if (!button.hasClass('loading')) {
+        button.toggleClass('loading').html(spinner);
+      } else {
+        button.toggleClass('loading').html('Load');
+      }
+    }
+  }
+
 }
 </script>
 

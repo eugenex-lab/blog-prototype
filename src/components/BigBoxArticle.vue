@@ -1,59 +1,58 @@
 <template>
 
-      <div class="big-box">
-        <div  class="image-container" v-if="showLoadStateBigBigArticle">
-        <img class="resizeGifLoaderBigBox" src="@/assets/image-BigBox.gif"
-             alt="Loading...">
-        </div>
+  <div class="big-box">
+    <div class="image-container" v-if="showLoadStateBigBigArticle">
+      <img class="resizeGifLoaderBigBox" src="@/assets/image-BigBox.gif"
+           alt="Loading...">
+    </div>
 
-        <div v-else class="left-section">
-          <img :src="imageUrl" alt="Image description">
-        </div>
+    <div v-else class="left-section">
+      <img :src="imageUrl" alt="Image description">
+    </div>
 
 
-        <div  class="text-container" v-if="showLoadStateBigBigArticle">
-          <img class="resizeGifLoaderBigBox" src="@/assets/image-SmallBox.gif"
-               alt="Loading...">
-        </div>
+    <div class="text-container" v-if="showLoadStateBigBigArticle">
+      <img class="resizeGifLoaderBigBox" src="@/assets/image-SmallBox.gif"
+           alt="Loading...">
+    </div>
 
-        <div v-else class="right-section">
+    <div v-else class="right-section">
 
-          <div class="details-row">
-            <span class="category-title">{{this.postDetails.categoryTransformed}}
+      <div class="details-row">
+            <span class="category-title">{{ this.postDetails.categoryTransformed }}
             </span>
-            <span class="dot"></span>
-            <span class="hours">{{getTimeAgo(this.postDetails.date)}}</span>
+        <span class="dot"></span>
+          <span class="hours">{{ getTimeAgo(this.postDetails.date) }}</span>
 
 
+      </div>
+      <h2 class="article-title">{{ postDetails.titleTransformed }}</h2>
 
-          </div>
-          <h2 class="article-title">{{   postDetails.titleTransformed      }}</h2>
+      <p class="article-description" v-html="postDetails.contentTransformed">
 
-          <p class="article-description" v-html="postDetails.contentTransformed"    >
-
-          </p>
+      </p>
 
 
-          <div class="base-section">
-            <div class="read-time">3 mins read</div>
-            <div class="full-read">Full read
-              <span class="arrow">
+      <div class="base-section">
+        <div class="read-time">3 mins read</div>
+        <div class="full-read">Full read
+          <span class="arrow">
                 <img class="iconArrow"
-                    src="@/assets/icons8-up-arrow-48.png"
+                     src="@/assets/icons8-up-arrow-48.png"
                      alt="arrow">
               </span>
 
-            </div>
-
-
         </div>
-</div>
+
+
       </div>
+    </div>
+  </div>
 
 </template>
 
 <script>
-import { mapGetters , mapActions ,mapState } from 'vuex'
+import {mapGetters, mapActions, mapState} from 'vuex'
 import moment from 'moment';
 
 export default {
@@ -74,19 +73,17 @@ export default {
       return this.postDetails.jetpack_featured_media_url
     },
     getTitle() {
-      console.log("the post details title", JSON.stringify(this.postDetails.title) )
+      console.log("the post details title", JSON.stringify(this.postDetails.title))
       const getdata = JSON.stringify(this.postDetails.title)
-      console.log("the post details title", getdata )
+      console.log("the post details title", getdata)
 
       return getdata
     }
 
   },
-  watch: {
-
-  },
+  watch: {},
   methods: {
-    ...mapActions(['FETCH_SINGLE_POST'] , ['FETCH_DATA_LIST']),
+    ...mapActions(['FETCH_SINGLE_POST'], ['FETCH_DATA_LIST']),
 
     getTimeAgo(date) {
       return moment(date).fromNow();
@@ -106,16 +103,16 @@ export default {
 }
 </script>
 
-<style scoped lang="scss" >
+<style scoped lang="scss">
 
 // hide big box on small screens
 // @media screen and (max-width: 655px) {
-   .big-box {
-display : none;
-   }
+.big-box {
+  display: none;
+}
 
 
-@media screen and (min-width: 655px ) {
+@media screen and (min-width: 655px) {
 
   .big-box {
     display: flex;
@@ -146,13 +143,12 @@ display : none;
     object-fit: cover;
   }
 
-  .right-section , .text-container {
+  .right-section, .text-container {
     min-width: 23rem;
     //min-width: 24rem;
     min-height: 18rem;
     position: relative;
   }
-
 
 
   .details-row {
@@ -219,14 +215,16 @@ display : none;
 
   .article-description {
     padding-right: 0.5rem;
-    font-family: 'SF Pro Text';
+    font-family: "SF Pro Text";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 21px;
     /* display: flex; */
-    align-items: center;
     color: #6E6E6E;
+    align-items: end;
+    text-align: justify;
+    flex-direction: row;
   }
 
   .dot {
@@ -295,20 +293,20 @@ display : none;
     width: 100%;
     height: 100%;
 
-}
+  }
 
-//.image-container{
-//  width: 28rem;
-//  height: 18rem;
-//  display: flex;
-//  align-items: baseline;
-//  flex-direction: column;
-//  justify-content: center;
-//  align-content: space-between;
-//
-//}
+  //.image-container{
+  //  width: 28rem;
+  //  height: 18rem;
+  //  display: flex;
+  //  align-items: baseline;
+  //  flex-direction: column;
+  //  justify-content: center;
+  //  align-content: space-between;
+  //
+  //}
 
-  .image-container{
+  .image-container {
     margin-right: 15px;
     min-width: 13em;
     /* min-height: 280px; */
@@ -318,17 +316,14 @@ display : none;
 
 @media screen and (min-width: 800px) {
 
-  .left-section , .image-container {
+  .left-section, .image-container {
 
     min-width: 23em;
 
   }
 
 
-
-
 }
-
 
 
 @media screen and (min-width: 1000px) {
@@ -348,22 +343,19 @@ display : none;
   }
 
 
-  .left-section , .image-container {
+  .left-section, .image-container {
 
     min-width: 32em;
 
   }
 
 
-  .right-section , .text-container{
+  .right-section, .text-container {
     min-width: 24rem;
 
   }
 
 }
-
-
-
 
 
 </style>

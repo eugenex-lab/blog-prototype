@@ -78,7 +78,8 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 15rem;
+  height: 26rem;
+  padding-top: 4rem;
 }
 
 @media screen and (min-width: 768px) {

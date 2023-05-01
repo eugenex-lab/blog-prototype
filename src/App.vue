@@ -40,7 +40,9 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'SF Pro Text';
+
+  font-style: normal;
 }
 
 .app {
@@ -78,7 +80,7 @@ export default {
   }
 }
 
-button,
+
 .router-button {
   transition: 500ms ease all;
   cursor: pointer;
