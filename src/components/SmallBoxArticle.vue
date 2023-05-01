@@ -170,6 +170,7 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 margin-bottom: 1rem;
+  height: 14rem;
 }
 
 .image-box {
