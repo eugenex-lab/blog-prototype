@@ -56,13 +56,13 @@ html,body {
 
 div[class*=container] {
   text-align: center;
-  width: 16rem;
+  width: 15rem;
   height: 4REM;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 37rem;
-  cursor: grab;
+  /* border-radius: 37rem; */
+  cursor: grab
 }
 
 .container-2 { background: #a2a4ad; }

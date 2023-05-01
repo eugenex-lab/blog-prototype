@@ -2,8 +2,10 @@
 
 
 
-    <button class="load-button">
-      <span>Send</span>
+    <button
+        @click="initiatePayment()"
+        class="load-button">
+      <span>JOIN US!</span>
       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
            width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
       <rect x="0" y="0" width="4" height="10" fill="#333">
@@ -33,10 +35,82 @@
 
 <script>
 import $ from 'jquery'
+// eslint-disable-next-line no-unused-vars
+// import router from "@/router";
+
+// import router from "@/router";
+
 
 export default {
   name: "JoinButton",
   methods: {
+
+    initiatePayment() {
+      console.log("Payment Initiated");
+        window.FlutterwaveCheckout({
+          public_key: `${process.env.VUE_APP_PUBLIC_KEY}`,
+          tx_ref: "new-sale"+ new Date(),
+          amount: 25,
+          currency: "USD",
+          country: "NG",
+          payment_options: "card",
+          customer: {
+            email: "kolapo.eugene@gmail.com",
+            phone_number: "+234702909304",
+            name: "Evan You",
+          },
+          callback: function(data) {
+            console.log(data.status);
+            console.log("Here is the callback" + data);
+
+            if (data.status === "successful") {
+              // redirect to a success page
+              // alert("Payment Successful")
+
+
+              // redirect to a / with location.ref
+
+              // commit to vuex
+              // set getShowStatusAlert to true
+              // set getStatusAlertSuccess to true
+              // this.$store.commit('SET_STATUS_ALERT_SUCCESS', true)
+
+
+
+              // AFTER 10 SECONDS, REDIRECT TO THE DASHBOARD
+              setTimeout(function() {
+                window.location.href =  "/";
+              }, 10000);  // 10 seconds
+
+            } else {
+              // redirect to a failure p
+              // this.$store.commit('SET_STATUS_ALERT_ERROR', true)
+
+
+              setTimeout(function() {
+                // alert("Redirecting to Dashboard")
+
+                window.location.href =  "/";
+
+
+
+
+                // set getShowStatusAlert to true
+                // set getStatusAlertError to true
+
+
+              }, 10000);  // 10 seconds
+            }
+
+          },
+          onclose: function() {},
+          customizations: {
+            title: "Dasdas Blog",
+            description: "Payment for Blog Membership",
+            logo: "https://imgtr.ee/images/2023/05/01/J5rMY.png",
+          },
+        });
+    }
 
   },
 
@@ -51,9 +125,19 @@ export default {
         }, 5000);
       });
     });
-  }
+  },
+  created() {
+    const script = document.createElement("script");
+    script.src = "https://checkout.flutterwave.com/v3.js";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  },
 
-  }
+
+
+}
+
+
+
 </script>
 
 
@@ -64,18 +148,12 @@ export default {
   $btn-txt-color: #fff;
 
   %button-default{
-    color: #fff;
-    color: #fff;
-    background-color: #000000;
-    /* padding: 0px; */
-    /* border: 0px; */
     font-size: 20px;
-    width: 177px;
-    //height: 0px;
     outline: 0;
     /* display: block; */
-    height: 4rem;
     margin-bottom: 4rem;
+    width: 15rem;
+    height: 4REM;
 }
 
 button.load-button{

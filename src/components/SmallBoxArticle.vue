@@ -19,7 +19,7 @@
               src=@/assets/skeleton-loading-list.gif
               :alt="`Image ${n}`" />
 
-          <img v-else @load="onImageLoaded"   :src="item.image" alt="Image description"  class="image-box">
+          <img v-else @load="onImageLoaded"   :src="item.image" alt="loading state"  class="image-box">
 
         </div>
 
@@ -49,7 +49,7 @@
             <span class="arrow">
                 <img class="iconArrow"
                      src="@/assets/icons8-up-arrow-48.png"
-                     alt="arrow">
+                     alt="arrow read more">
               </span>
 
           </div>

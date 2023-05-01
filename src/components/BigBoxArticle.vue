@@ -3,11 +3,11 @@
   <div class="big-box">
     <div class="image-container" v-if="showLoadStateBigBigArticle">
       <img class="resizeGifLoaderBigBox" src="@/assets/image-BigBox.gif"
-           alt="Loading...">
+           alt="loading Skeleton Frame">
     </div>
 
     <div v-else class="left-section">
-      <img :src="imageUrl" alt="Image description">
+      <img :src="imageUrl" alt="Article Image">
     </div>
 
 

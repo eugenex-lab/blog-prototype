@@ -7,6 +7,10 @@ export default createStore({
         postList: [],
         post: [],
         showLoadStateBigBigArticle: true,
+        statusAlertSuccess: false,
+        statusAlertError: false,
+        statusAlertWarning: false,
+        showStatusAlert: false,
 
 
         id: 7
@@ -31,10 +35,45 @@ export default createStore({
         getShowLoadStateBigBigArticle(state) {
             return state.showLoadStateBigBigArticle
         }
+        ,
+        getStatusAlertSuccess(state) {
+            return state.statusAlertSuccess
+        }
+        ,
+
+        getStatusAlertError(state) {
+            return state.statusAlertError
+        }
+        ,
+        getStatusAlertWarning(state) {
+            return state.statusAlertWarning
+        },
+        getShowStatusAlert(state) {
+            return state.showStatusAlert
+        }
+
+
+
 
 
     },
     mutations: {
+        SET_SHOW_STATUS_ALERT(state, newState) {
+            state.showStatusAlert = newState
+        }
+        ,
+        SET_STATUS_ALERT_SUCCESS(state, newState) {
+            state.statusAlertSuccess = newState
+        }
+        ,
+        SET_STATUS_ALERT_ERROR(state, newState) {
+            state.statusAlertError = newState
+        }
+        ,
+        SET_STATUS_ALERT_WARNING(state, newState) {
+            state.statusAlertWarning = newState
+        }
+        ,
         SET_SHOW_LOAD_STATE_BIG_BIG_ARTICLE(state, newState) {
             state.showLoadStateBigBigArticle = newState
         }
@@ -64,7 +103,11 @@ export default createStore({
             state.post = newData
             // state.post.titleTransformed = newData.title.rendered // remove &#8217 and &#8216
 
-            state.post.titleTransformed = newData.title.rendered.replace(/&#8217;/g, "'").replace(/&#8216;/g, "'")
+            state.post.titleTransformed = newData.title.rendered.replace(/&#8217;/g, "'").replace(/&#8216;/g, "'").replace(/<a\b[^>]*>/gi, '<a>'
+            )
+
+            // remove all href link decoration from the content
+
 
         state.post.contentTransformed = newData.content.rendered.substring(0, 500) + "..."
 
@@ -88,10 +131,15 @@ export default createStore({
                         console.log(response.data)
                         commit('ADD_DATA_LIST', response.data)
                         // set showLoadStateBigBigArticle to false
+                    commit('SET_STATUS_ALERT_WARNING', false)
+                    // commit('SET_SHOW_STATUS_ALERT', true   )
                     }
                 )
                 .catch(error => {
                         console.log(error)
+                    // set showLoadStateBigBigArticle to false
+                    commit('SET_STATUS_ALERT_WARNING', true)
+                    commit('SET_SHOW_STATUS_ALERT', true   )
                     }
                 )
         },
@@ -109,11 +157,16 @@ export default createStore({
 
                             // set showLoadStateBigBigArticle to false
                             commit('SET_SHOW_LOAD_STATE_BIG_BIG_ARTICLE', false)
+                            commit('SET_STATUS_ALERT_WARNING', false)
+
 
                         }
                     )
                     .catch(error => {
                             console.log(error)
+                            commit('SET_STATUS_ALERT_WARNING', true)
+                        commit('SET_SHOW_STATUS_ALERT', true   )
+
                         }
                     )
             )

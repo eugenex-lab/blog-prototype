@@ -1,25 +1,29 @@
 <template>
   <header>
     <div class="container">
+      <StatusAlert />
+
       <div class="left">
         <img src="@/assets/dasdasLogo.png" alt="Blog Logo">
       </div>
       <div class="right">
         <a href="https://twitter.com/"  target="_blank" ><img src="@/assets/twitter.svg" alt="Twitter Logo"></a>
         <span class="dot"></span>
-        <a href="https://github.com/"  target="_blank" ><img src="@/assets/icons8-dribbble.svg" alt="GitHub Logo"></a>
+        <a href="https://dribbble.com/"  target="_blank" ><img src="@/assets/icons8-dribbble.svg" alt="GitHub Logo"></a>
         <span class="dot"></span>
-        <a href="https://twitter.com/"  target="_blank" ><img src="@/assets/figma.svg" alt="Twitter Logo"></a>
+        <a href="https://www.figma.com/"  target="_blank" ><img src="@/assets/figma.svg" alt="Twitter Logo"></a>
         <span class="dot"></span>
-        <a href="https://github.com/"  target="_blank" ><img src="@/assets/githubreal.svg" alt="GitHub Logo"></a>
+        <a href="https://github.com/eugenex-lab/blog-prototype/"  target="_blank" ><img src="@/assets/githubreal.svg" alt="GitHub Logo"></a>
       </div>
     </div>
   </header>
 </template>
 
 <script>
+import StatusAlert from "@/components/AppNotification/StatusAlert";
 export default {
-  name: 'TheHeader'
+  name: 'TheHeader',
+  components: {StatusAlert}
 }
 </script>
 
@@ -41,6 +45,17 @@ export default {
 //  justify-content: space-around;
 //  align-items: center;
 //}
+
+// make this to float on the top of the page StatusAlert
+
+StatusAlert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
 
 header {
   background-color: #fff;

@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import JoinButton from "@/components/Buttons/JoinButton";
+import JoinButton from "@/components/Buttons/FlutterWaveJoinButton";
 export default {
   name: 'TheFooter',
   components: {JoinButton},

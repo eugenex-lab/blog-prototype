@@ -1,8 +1,9 @@
 <template>
 <!--  <div class="app-wrapper">-->
+
     <TheHeader></TheHeader>
 
-      <router-view />
+  <router-view />
    <TheFooter></TheFooter>
 
 <!--  </div>-->
@@ -12,6 +13,7 @@
 
 import TheFooter from "@/components/TheFooter";
 import TheHeader from "@/components/TheHeader";
+// import StatusAlert from "@/components/AppNotification/StatusAlert";
 export default {
   name: "app",
   components: {TheHeader, TheFooter },
