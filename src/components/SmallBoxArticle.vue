@@ -5,15 +5,26 @@
     <img v-for="n in 6" :key="n"
          class="image-List"
 
+
          src=@/assets/skeleton-loading-list.gif
          :alt="`Image ${n}`" />
     </div>
     <div v-else v-for="(item, index) in visibleItems" :key="index" class="box">
 
         <div class="top-row">
+          <img
+              v-if="showLoadStateBigBigArticle"
+              class="image-box"
 
-        <img :src="item.image" alt="Image description"  class="image-box">
+              src=@/assets/skeleton-loading-list.gif
+              :alt="`Image ${n}`" />
+
+          <img v-else @load="onImageLoaded"   :src="item.image" alt="Image description"  class="image-box">
+
         </div>
+
+
+
 
         <div class="top-section">
           <div class="section-category">{{ item.categoryTransformed }}</div>
@@ -95,6 +106,9 @@ export default {
     },
     getTimeAgo(date) {
       return moment(date).fromNow();
+    },
+    onImageLoaded() {
+      this.$store.commit('showLoadStateBigBigArticle', false)
     }
   },
 
