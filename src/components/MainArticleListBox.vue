@@ -72,20 +72,25 @@
         </div>
       </div>
 
+      <ShowMoreButton v-if="showMoreButton" @click="showMore">Show More</ShowMoreButton>
 
 
   </div>
   </div>
-<!--  <button v-if="showMoreButton" @click="showMore">Show More</button>-->
 
 </template>
 
 <script>
 import {mapGetters, mapState} from "vuex";
 import moment from "moment";
+import ShowMoreButton from "@/components/Buttons/ShowMoreButton";
+
 
 export default {
   name: "MainArticleListBox",
+  components: {
+    ShowMoreButton
+  },
   data() {
 
     return {
@@ -122,7 +127,7 @@ export default {
       return this.getPostList.slice(0, this.numItemsLoaded)
     },
     showMoreButton() {
-      return this.numItemsLoaded < this.getPostList.length
+      return this.numItemsLoaded < 9
     }
   },
 

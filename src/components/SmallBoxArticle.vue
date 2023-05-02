@@ -392,13 +392,29 @@ p.desc-content {
   }
 }
 
+//.box {
+//  transition: all 0.3s ease-in-out;
+//}
+//
+//.box:hover {
+//  transform: scale(1.05);
+//  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+//}
+
+.box-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .box {
-  transition: all 0.3s ease-in-out;
+  width: 30%;
+  padding: 1rem;
+  //border: 1px solid #ccc;
+  transition: transform 0.3s ease-in-out;
 }
 
 .box:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
 }
 
 
