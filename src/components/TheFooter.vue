@@ -2,8 +2,8 @@
   <footer>
     <div class="container">
       <h2  class="title">Join our Team of Writers</h2>
-      <p>On dasdas, writers earn a living doing what they love.</p>
-      <p class="inline-p">Getting started is easy. Just pay a one time $25 fee and everything is ready to go.</p>
+      <p class="inline-p">On dasdas, writers earn a living doing what they love.</p>
+      <p class="inline-p second-paragraph">Getting started is easy. Just pay a one time $25 fee and everything is ready to go.</p>
       <JoinButton>
       </JoinButton>
     </div>
@@ -26,18 +26,16 @@ export default {
 <style scoped>
 
 .title {
-  font-family: 'SF Pro Display';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 38px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-
-  /* --c-black */
-
-  color: #2C2C2C;
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #2C2C2C;
+    //padding-bottom: 4rem;
 
 }
 
@@ -52,20 +50,21 @@ button {
 }
 
 p{
-  font-family: 'SF Pro Display';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 32px;
-  color: #6E6E6E;
-  width: 80%;
-  text-align: center;
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 32px;
+    color: #6E6E6E;
+    width: 80%;
+    text-align: center;
 }
 
 .inline-p {
-  /*margin-bottom: 15px;*/
-  text-align: center;
-  margin-top: -2rem;
+    /* margin-bottom: 15px; */
+    text-align: center;
+    /* margin-top: -6rem; */
+    padding-top: 1rem;
 }
 
 footer {
@@ -73,13 +72,17 @@ footer {
   padding: 15px 0;
 }
 
+.second-paragraph {
+    padding-bottom: 2rem;
+}
+
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  height: 26rem;
-  padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //justify-content: space-between;
+    height: 36rem;
+    padding-top: 4rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -93,9 +96,7 @@ footer {
     margin-top: 0;
   }
 
-  .container > * {
-    flex: 1;
-  }
+
 
   .container > button {
     margin-left: 20px;

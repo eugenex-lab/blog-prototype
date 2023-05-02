@@ -4,31 +4,39 @@
     <TheHeader></TheHeader>
 
   <router-view />
-   <TheFooter></TheFooter>
+
 
 <!--  </div>-->
 </template>
 
 <script>
 
-import TheFooter from "@/components/TheFooter";
+// import TheFooter from "@/components/TheFooter";
 import TheHeader from "@/components/TheHeader";
+import {mapActions} from "vuex";
 // import StatusAlert from "@/components/AppNotification/StatusAlert";
 export default {
   name: "app",
-  components: {TheHeader, TheFooter },
+    components: {TheHeader },
   data() {
     return {
       navigation: null,
     };
   },
+    methods: {
+        ...mapActions(['FETCH_SINGLE_POST'], ['FETCH_DATA_LIST']),
+    }
+  ,
   created() {
 
   },
-  mounted() {},
-  methods: {
+  mounted() {
+      this.FETCH_SINGLE_POST()
+
+      this.$store.dispatch('FETCH_DATA_LIST')
 
   },
+
   watch: {
 
   },

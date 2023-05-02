@@ -22,19 +22,20 @@
             <span class="category-title">{{ this.postDetails.categoryTransformed }}
             </span>
         <span class="dot"></span>
-          <span class="hours">{{ getTimeAgo(this.postDetails.date) }}</span>
+          <span class="hours">{{ getTimeAgo(this.postDetails.date) }} </span>
 
 
       </div>
       <h2 class="article-title">{{ postDetails.titleTransformed }}</h2>
 
-      <p class="article-description" v-html="postDetails.contentTransformed">
+      <p class="article-description" v-html="transformShortArticle">
+
 
       </p>
 
 
-      <div class="base-section">
-        <div class="read-time">3 mins read</div>
+      <a class="base-section" @click="articleDetails()">
+        <div class="read-time">{{estimatedReadingTime}} Mins Read</div>
         <div class="full-read">Full read
           <span class="arrow">
                 <img class="iconArrow"
@@ -45,7 +46,7 @@
         </div>
 
 
-      </div>
+      </a>
     </div>
   </div>
 
@@ -60,6 +61,16 @@ export default {
   computed: {
     ...mapState(['showLoadStateBigBigArticle']),
     ...mapGetters(['getPost']),
+    transformShortArticle() {
+      // return this.postDetails.contentTransformed
+
+      const regex = /<audio[\s\S]*?<\/audio>|<video[\s\S]*?<\/video>/g;
+      const str = this.postDetails.contentTransformed;
+      const subst = ``;
+      return str.replace(regex, subst);
+
+
+    },
     postDetails() {
 
       // typeof this.getPost
@@ -78,24 +89,41 @@ export default {
       console.log("the post details title", getdata)
 
       return getdata
-    }
+    },
+    estimatedReadingTime() {
+      const wordCount = this.postDetails.articleMainDetails.length;
+      const averageReadingSpeed = 200; // words per minute
+      console.log("the post details title", wordCount)
+      return Math.ceil(wordCount / averageReadingSpeed);
+    },
 
   },
   watch: {},
   methods: {
-    ...mapActions(['FETCH_SINGLE_POST'], ['FETCH_DATA_LIST']),
+
 
     getTimeAgo(date) {
-      return moment(date).fromNow();
+      return moment(date).fromNow().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+    },
+    articleDetails() {
+      // console.log("the post details title", this.postDetails.articleMainDetails.length)
+      //
+      // console.log("it takes so sos to ", this.estimatedReadingTime)
+
+      // this.$router.push({name: 'ArticleDetails', params: {id: this.postDetails.id}})
+console.log("the post details title", this.postDetails.id)
+this.$router.push({name: 'postDetail', params: {id: this.postDetails.id}})
+
     }
 
 
   },
+
   mounted() {
     // create a random number between 100 and 200
-    this.FETCH_SINGLE_POST()
-
-    this.$store.dispatch('FETCH_DATA_LIST')
+    // this.FETCH_SINGLE_POST()
+    //
+    // this.$store.dispatch('FETCH_DATA_LIST')
 
 
   }

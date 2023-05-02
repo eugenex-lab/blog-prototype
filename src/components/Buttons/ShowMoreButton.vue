@@ -57,7 +57,7 @@ html,body {
 div[class*=container] {
   text-align: center;
   width: 15rem;
-  height: 4REM;
+  height:3.5REM;
   display: flex;
   justify-content: center;
   align-items: center;

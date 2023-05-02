@@ -1,23 +1,21 @@
 <template>
   <div class="container">
     <BigBoxArticle />
-
       <SmallBoxArticle />
-
-
-
-
   </div>
+  <TheFooter></TheFooter>
 </template>
 
 <script>
 import BigBoxArticle from "@/components/BigBoxArticle.vue";
 import SmallBoxArticle from "@/components/SmallBoxArticle";
+import TheFooter from "@/components/TheFooter";
 export default {
-  name: 'HomeView',
+  name: 'BlogList',
   components: {
     SmallBoxArticle,
-    BigBoxArticle
+    BigBoxArticle,
+    TheFooter
 
   },
   data() {

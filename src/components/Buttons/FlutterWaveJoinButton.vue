@@ -153,7 +153,7 @@ export default {
     /* display: block; */
     margin-bottom: 4rem;
     width: 15rem;
-    height: 4REM;
+    height: 3.6rem;
 }
 
 button.load-button{

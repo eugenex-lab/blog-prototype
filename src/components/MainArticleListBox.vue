@@ -1,8 +1,20 @@
 <template>
   <div  class="containerTopLayout">
+      <div class="more-articles" >
+
+          More Articles
+
+
+
+      </div>
+
   <div class="box-container">
-    <div   class="list-loader-container"  v-if="showLoadStateBigBigArticle">
-    <img v-for="n in 6" :key="n"
+
+
+
+
+    <div   class="list-loader-container"  v-if="showLoadStateBigArticle">
+    <img v-for="n in 3" :key="n"
          class="image-List"
 
 
@@ -13,7 +25,7 @@
 
         <div class="top-row">
           <img
-              v-if="showLoadStateBigBigArticle"
+              v-if="showLoadStateBigArticle"
               class="image-box"
 
               src=@/assets/skeleton-loading-list.gif
@@ -64,7 +76,6 @@
 
   </div>
   </div>
-  <ShowMoreButton v-if="showMoreButton" @click="showMore"></ShowMoreButton>
 <!--  <button v-if="showMoreButton" @click="showMore">Show More</button>-->
 
 </template>
@@ -72,11 +83,9 @@
 <script>
 import {mapGetters, mapState} from "vuex";
 import moment from "moment";
-import ShowMoreButton from "@/components/Buttons/ShowMoreButton";
 
 export default {
-  name: "SmallBoxArticle",
-  components: {ShowMoreButton},
+  name: "MainArticleListBox",
   data() {
 
     return {
@@ -90,7 +99,7 @@ export default {
   ,
 
   computed: {
-    ...mapState(['showLoadStateBigBigArticle']),
+    ...mapState(['showLoadStateBigArticle']),
 
     ...mapGetters(['getPostList']),
     estimatedReadingTime() {
@@ -120,12 +129,24 @@ export default {
   methods: {
     /// cal the time to read the article from the number of words
     articleDetails(id) {
+        // alert("the id is" + id)
 
       console.log("the id is", id)
-      this.$router.push({name: 'postDetail', params: {id: id}})
+      // this.$router.push({name: 'postDetail', params: {id: id}})
 
-        //scroll to top
-        window.scrollTo(0, 0)
+        // how to pass the id to the route and run an action to get the post details
+
+      this.$router.push({name: 'postDetail', params: {id: id}})
+          .then(() => {
+
+this.$router.go()
+
+              /// go to the top of the page
+              window.scrollTo(0, 0)
+
+              // location.reload()
+
+          })
 
 
     },
@@ -149,7 +170,7 @@ export default {
         // return moment(date).fromNow().toUpperCase()
     },
     onImageLoaded() {
-      this.$store.commit('showLoadStateBigBigArticle', false)
+      this.$store.commit('SET_SHOW_LOAD_STATE_BIG_BIG_ARTICLE', false)
     }
   },
 
@@ -157,11 +178,11 @@ export default {
   props: {
     initialVisibleItems: {
       type: Number,
-      default: 6
+      default: 3
     },
     itemsPerLoad: {
       type: Number,
-      default: 6
+      default: 3
     },
 
 
@@ -186,15 +207,15 @@ img.image-box {
 
 .box-container {
   display: flex;
-
-border-radius: 5px;
-
+  border-radius: 5px;
   padding-top: 2rem;
   flex-wrap: wrap;
   flex-direction: column;
-
   width: 100%;
-  max-width: 1272px;}
+  max-width: 1272px;
+  align-items: center;
+  padding-bottom: 200px;
+}
 
 .box {
 
@@ -344,11 +365,13 @@ p.desc-content {
 
 .containerTopLayout{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+  min-height: 30rem;
 }
+
 
 .base-section{
   display: flex;
@@ -380,6 +403,23 @@ p.desc-content {
   width: 12px;
   margin-bottom: -0.2rem;
 }
+
+.more-articles{
+
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  height: 29px;
+  display: flex;
+  align-items: center;
+  color: #2C2C2C;
+  width: 91%;
+  max-width: 1154px;
+}
+
+
 @media (min-width: 768px) {
   .box-container {
     display: flex;
