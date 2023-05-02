@@ -1,6 +1,6 @@
 <template>
 
-  <div class="big-box">
+  <div class="big-box"  @click="articleDetails()" >
     <div class="image-container" v-if="showLoadStateBigBigArticle">
       <img class="resizeGifLoaderBigBox" src="@/assets/image-BigBox.gif"
            alt="loading Skeleton Frame">

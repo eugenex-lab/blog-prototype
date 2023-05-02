@@ -263,6 +263,7 @@ export default createStore({
         },
 
 
+
         async FETCH_AUTHOR_BY_ID({commit} ,param  )   {
             (await axios.get(`https://techcrunch.com/wp-json/wp/v2/users/${param}`)
                     .then(response => {

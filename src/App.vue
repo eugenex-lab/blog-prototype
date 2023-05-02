@@ -2,14 +2,16 @@
 <!--  <div class="app-wrapper">-->
 
     <TheHeader></TheHeader>
+    <transition name="fade">
 
   <router-view />
-
+  </transition>
 
 <!--  </div>-->
 </template>
 
 <script>
+import { Transition } from 'vue'
 
 // import TheFooter from "@/components/TheFooter";
 import TheHeader from "@/components/TheHeader";
@@ -17,7 +19,7 @@ import {mapActions} from "vuex";
 // import StatusAlert from "@/components/AppNotification/StatusAlert";
 export default {
   name: "app",
-    components: {TheHeader },
+    components: {TheHeader,Transition },
   data() {
     return {
       navigation: null,
@@ -171,4 +173,40 @@ export default {
     }
   }
 }
+
+a{
+  // remove the blue highlight
+  //-webkit-tap-highlight-color: transparent;
+  // remove the tap highlight for links and buttons
+  //-webkit-tap-highlight-color: rgba(0,0,0,0);
+  color: #6E6E6E;
+  //text-decoration: none;
+  //font-size: 14px;
+
+}
+
+p{
+
+  font-family: 'SF Pro Text';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  /* or 150% */
+
+
+  /* --c-black-20 */
+
+  color: #6E6E6E;
+}
+
+h2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+p a {
+  display: none;
+}
+
 </style>

@@ -104,13 +104,17 @@ export default {
 
           let article = this.postDetails.contentTransformed
           let firstTwoParagraphs = article.split('</p>').slice(0, 2).join('</p>')
-          return firstTwoParagraphs
+         // cna we use regex to remove all div tags from content
+          let regex = /<div[\s\S]*?<\/div>/g;
+
+          return firstTwoParagraphs.replace(regex, '')
       },
       // get 3 paragraphs to the end
       getRestOfArticle() {
           let article = this.postDetails.contentTransformed
           let restOfArticle = article.split('</p>').slice(2,8).join('</p>')
-          return restOfArticle
+          let regex = /<div[\s\S]*?<\/div>/g;
+          return restOfArticle.replace(regex, '')
       },
 
   },

@@ -9,7 +9,7 @@
          src=@/assets/skeleton-loading-list.gif
          :alt="`Image ${n}`" />
     </div>
-    <div v-else v-for="(item, index) in visibleItems" :key="index" class="box">
+    <div v-else v-for="(item, index) in visibleItems" :key="index" class="box animate"      @click="articleDetails(item.id)"  >
 
         <div class="top-row">
           <img
@@ -391,6 +391,16 @@ p.desc-content {
     justify-content: space-evenly;
   }
 }
+
+.box {
+  transition: all 0.3s ease-in-out;
+}
+
+.box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
 
 
 </style>
