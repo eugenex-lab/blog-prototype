@@ -21,7 +21,7 @@
          src=@/assets/skeleton-loading-list.gif
          :alt="`Image ${n}`" />
     </div>
-    <div v-else v-for="(item, index) in visibleItems" :key="index" class="box">
+    <div v-else v-for="(item, index) in visibleItems" :key="index" class="box"     @click="articleDetails(item.id)">
 
         <div class="top-row">
           <img
