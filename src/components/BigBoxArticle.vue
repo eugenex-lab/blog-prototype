@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import {mapGetters, mapActions, mapState} from 'vuex'
+import {mapGetters, mapState} from 'vuex'
 import moment from 'moment';
 
 export default {
