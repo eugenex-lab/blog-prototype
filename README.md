@@ -25,6 +25,12 @@ Here're some of the project's best features:
 npm install
 ```
 
+<p>2. Run</p>
+
+```
+npm run serve
+```
+
 <p>2. build</p>
 
 ```
