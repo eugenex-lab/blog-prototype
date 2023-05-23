@@ -12,6 +12,15 @@
 
 <script>
 import { Transition } from 'vue'
+import { onMounted } from 'vue';
+
+
+
+import {computed, reactive } from 'vue'
+import { useHead } from '@vueuse/head'
+
+
+
 
 // import TheFooter from "@/components/TheFooter";
 import TheHeader from "@/components/TheHeader";
@@ -19,30 +28,43 @@ import {mapActions} from "vuex";
 // import StatusAlert from "@/components/AppNotification/StatusAlert";
 export default {
   name: "app",
-    components: {TheHeader,Transition },
-  data() {
-    return {
-      navigation: null,
-    };
-  },
-    methods: {
-        ...mapActions(['FETCH_SINGLE_POST'], ['FETCH_DATA_LIST']),
-    }
-  ,
-  created() {
+  components: {TheHeader,Transition },
 
+  methods: {
+    ...mapActions(['FETCH_SINGLE_POST'], ['FETCH_DATA_LIST']),
   },
   mounted() {
-      this.FETCH_SINGLE_POST()
-
-      this.$store.dispatch('FETCH_DATA_LIST')
-
+    this.FETCH_SINGLE_POST();
+    this.$store.dispatch('FETCH_DATA_LIST');
   },
-
   watch: {
-
+    // Add your watch properties here
   },
-};
+  setup() {
+    onMounted(() => {
+      // Add your onMounted logic here
+    });
+
+    const siteData = reactive({
+      title: `My website`,
+      description: `My beautiful website We got here ######`,
+    })
+
+    useHead({
+      // Can be static or computed
+      title: computed(() => siteData.title),
+      meta: [
+        {
+          name: `description`,
+          content: computed(() => siteData.description),
+        },
+      ],
+
+    })
+
+  }
+}
+
 </script>
 
 <style  lang="scss">
